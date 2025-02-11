@@ -29,7 +29,9 @@ export async function POST(request: Request) {
   const body: Payload = await request.json();
   if (body == null || body.schema !== "public" || body.table !== "profiles")
     return new Response(null, { status: 400 });
+  revalidatePath("/");
   if (body.old_record != null) revalidatePath(`/${body.old_record.name}`);
   if (body.record != null) revalidatePath(`/${body.record.name}`);
+  console.log(`REVALIDATE: /${body.record?.name || body.old_record?.name}`);
   return new Response(null);
 }

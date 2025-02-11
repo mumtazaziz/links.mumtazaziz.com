@@ -1,6 +1,8 @@
 import { createClient } from "@/utils/supabase/server";
 import Profile from "./Profile";
 
+export const dynamic = "force-static";
+
 const getProfiles = async () => {
   const supabase = await createClient();
   const { data } = await supabase
