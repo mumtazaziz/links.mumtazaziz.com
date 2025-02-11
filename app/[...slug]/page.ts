@@ -1,19 +1,11 @@
 import { notFound, redirect } from "next/navigation";
-import { createClient as createBrowserClient } from "@/utils/supabase/client";
+import { ServerRuntime } from "next/types";
 import { createClient as createServerClient } from "@/utils/supabase/server";
+
+export const runtime: ServerRuntime = "edge";
 
 interface ProfileParams {
   slug: string[];
-}
-
-export async function generateStaticParams(): Promise<ProfileParams[]> {
-  const supabase = await createBrowserClient();
-  const { data: profiles } = await supabase
-    .from("profiles")
-    .select("name")
-    .eq("enabled", true);
-
-  return (profiles || []).map((profile) => ({ slug: [profile.name] }));
 }
 
 export default async function ProfilePage({

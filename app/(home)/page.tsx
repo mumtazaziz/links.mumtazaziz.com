@@ -1,5 +1,8 @@
+import { ServerRuntime } from "next/types";
 import { createClient } from "@/utils/supabase/server";
 import Profile from "./Profile";
+
+export const runtime: ServerRuntime = "edge";
 
 export default async function HomePage() {
   const supabase = await createClient();
