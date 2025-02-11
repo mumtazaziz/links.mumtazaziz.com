@@ -13,6 +13,7 @@ export type Database = {
         Row: {
           description: string | null
           enabled: boolean
+          icon: Json
           id: number
           name: string
           url: string
@@ -21,6 +22,7 @@ export type Database = {
         Insert: {
           description?: string | null
           enabled?: boolean
+          icon?: Json
           id?: number
           name: string
           url: string
@@ -29,6 +31,7 @@ export type Database = {
         Update: {
           description?: string | null
           enabled?: boolean
+          icon?: Json
           id?: number
           name?: string
           url?: string
