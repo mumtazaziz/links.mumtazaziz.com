@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import { Metadata } from "next/types";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import Profile from "./Profile";
