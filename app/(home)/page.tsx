@@ -6,7 +6,8 @@ export default async function HomePage() {
   const { data: profiles } = await supabase
     .from("profiles")
     .select("*")
-    .eq("enabled", true);
+    .eq("enabled", true)
+    .order("name");
 
   return (
     <div className="list-group">
