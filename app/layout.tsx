@@ -1,9 +1,9 @@
-import { Metadata } from "next";
+import { Metadata } from "next/types";
 import { Inter } from "next/font/google";
-import "./globals.scss";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "./bootstrap.scss";
 
 // Disable FontAwesome CSS auto-injection.
-import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 
 const inter = Inter({
