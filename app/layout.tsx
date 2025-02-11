@@ -14,14 +14,12 @@ export const metadata: Metadata = {
   title: "Mumtaz Aziz's Links",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <html lang="en">
-      <body className={`${inter.className}`}>{children}</body>
+    <html lang="en" className="h-100">
+      <body className={`${inter.className} d-flex flex-column h-100`}>
+        {children}
+      </body>
     </html>
   );
 }
