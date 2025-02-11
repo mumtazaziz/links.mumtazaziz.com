@@ -1,6 +1,11 @@
+import { Metadata } from "next";
+import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import Profile from "./Profile";
-import Link from "next/link";
+
+export const metadata: Metadata = {
+  description: "Hit me up on my profiles or check out mumtazaziz.com.",
+};
 
 export default async function RootPage() {
   const supabase = await createClient();
