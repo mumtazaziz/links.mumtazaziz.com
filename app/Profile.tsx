@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Tables } from "@/utils/supabase/database.types";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Tables } from "@/utils/supabase/database.types";
 
 type Profile = Tables<"profiles">;
 

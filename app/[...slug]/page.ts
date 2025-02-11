@@ -10,7 +10,7 @@ export async function generateStaticParams(): Promise<ProfileParams[]> {
   const supabase = await createBrowserClient();
   const { data: profiles } = await supabase
     .from("profiles")
-    .select("*")
+    .select("name")
     .eq("enabled", true);
 
   return (profiles || []).map((profile) => ({ slug: [profile.name] }));

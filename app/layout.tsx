@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 
 // Disable FontAwesome CSS auto-injection.
 import { config } from "@fortawesome/fontawesome-svg-core";
