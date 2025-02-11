@@ -1,21 +1,19 @@
 import { notFound, redirect } from "next/navigation";
-import { ServerRuntime } from "next/types";
-import { createClient as createServerClient } from "@/utils/supabase/server";
+import { createClient } from "@/utils/supabase/server";
 
-export const runtime: ServerRuntime = "edge";
+export const dynamic = "force-static";
 
 interface ProfileParams {
   slug: string[];
 }
 
-export default async function ProfilePage({
-  params,
-}: {
-  params: Promise<ProfileParams>;
-}) {
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<ProfileParams> }
+) {
   const name = (await params).slug.join("/");
 
-  const supabase = await createServerClient();
+  const supabase = await createClient();
   const { data: profiles } = await supabase
     .from("profiles")
     .select("url")

@@ -1,16 +1,22 @@
-import { ServerRuntime } from "next/types";
 import { createClient } from "@/utils/supabase/server";
 import Profile from "./Profile";
 
-export const runtime: ServerRuntime = "edge";
-
-export default async function HomePage() {
+const getProfiles = async () => {
   const supabase = await createClient();
-  const { data: profiles } = await supabase
+  const { data } = await supabase
     .from("profiles")
     .select("*")
     .eq("enabled", true)
     .order("name");
+  return data;
+};
+
+interface HomePageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function HomePage({ searchParams }: HomePageProps) {
+  const profiles = await getProfiles();
 
   return (
     <div className="list-group">
