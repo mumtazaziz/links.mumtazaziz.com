@@ -3,7 +3,7 @@ import Profile from "./Profile";
 
 export const dynamic = "force-static";
 
-const getProfiles = async () => {
+async function getProfiles() {
   const supabase = await createClient();
   const { data } = await supabase
     .from("profiles")
@@ -11,7 +11,7 @@ const getProfiles = async () => {
     .eq("enabled", true)
     .order("name");
   return data;
-};
+}
 
 export default async function HomePage() {
   const profiles = await getProfiles();
