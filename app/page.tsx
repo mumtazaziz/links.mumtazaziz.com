@@ -1,31 +1,32 @@
+import { createClient } from "@/utils/supabase/server";
+import Profile from "./Profile";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { profiles } from "@/profiles";
 
-export default function Home() {
+export default async function RootPage() {
+  const supabase = await createClient();
+  const { data: profiles } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("enabled", true);
+
   return (
     <>
-      <main className="container d-md-flex my-5">
-        <h1 className="w-100 mb-4">See me on...</h1>
-        <div className="list-group w-100">
-          {...profiles.map((profile) => (
-            <Link
-              href={profile.url}
-              className="list-group-item list-group-item-action d-flex gap-3 p-3 align-items-center"
-              title={profile.description}
-              key={profile.name}
-            >
-              {profile.icon && (
-                <span className="fs-4">
-                  <FontAwesomeIcon icon={profile.icon} fixedWidth />
-                </span>
-              )}
-              <span>{profile.description}</span>
-              {profile.username && (
-                <span className="text-body-secondary">{profile.username}</span>
-              )}
-            </Link>
-          ))}
+      <main className="container my-5 h-100">
+        <div className="row">
+          <div className="col-md-6 mb-4">
+            <h1>Hit me up on...</h1>
+            <p>
+              or check out{" "}
+              <Link href="https://www.mumtazaziz.com">mumtazaziz.com</Link>
+            </p>
+          </div>
+          <div className="col-md-6">
+            <div className="list-group">
+              {...(profiles || []).map((profile) => (
+                <Profile profile={profile} key={profile.name} />
+              ))}
+            </div>
+          </div>
         </div>
       </main>
     </>
