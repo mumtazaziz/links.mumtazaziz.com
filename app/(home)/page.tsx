@@ -11,11 +11,7 @@ const getProfiles = async () => {
   return data;
 };
 
-interface HomePageProps {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-export default async function HomePage({ searchParams }: HomePageProps) {
+export default async function HomePage() {
   const profiles = await getProfiles();
 
   return (
