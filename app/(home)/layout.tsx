@@ -1,8 +1,8 @@
-import Link from "next/link";
+import NextLink from "next/link";
 import { Metadata } from "next/types";
 
 export const metadata: Metadata = {
-  description: "Hit me up on my profiles or check out mumtazaziz.com.",
+  description: "Hit me up on my links or check out mumtazaziz.com.",
 };
 
 export default function HomeLayout({ children }: React.PropsWithChildren) {
@@ -13,7 +13,9 @@ export default function HomeLayout({ children }: React.PropsWithChildren) {
           <h1>Hit me up on...</h1>
           <p>
             or check out{" "}
-            <Link href="https://www.mumtazaziz.com">mumtazaziz.com</Link>
+            <NextLink href="https://www.mumtazaziz.com">
+              mumtazaziz.com
+            </NextLink>
           </p>
         </div>
         <div className="col-md-6">{children}</div>

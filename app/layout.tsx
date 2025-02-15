@@ -1,5 +1,6 @@
-import { Metadata } from "next/types";
 import { Inter } from "next/font/google";
+import { Metadata } from "next/types";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "./bootstrap.scss";
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
     <html lang="en" className="h-100">
       <body className={`${inter.className} d-flex flex-column h-100`}>
         {children}
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
