@@ -1,6 +1,5 @@
 import { LINKS_TABLE } from "@/utils/supabase";
 import { createClient } from "@/utils/supabase/server";
-import Link from "./Link";
 
 async function getLinks() {
   const supabase = await createClient();
@@ -12,13 +11,12 @@ async function getLinks() {
   return data;
 }
 
-export default async function HomePage() {
-  const links = await getLinks();
-  return (
-    <div className="flex flex-col gap-2">
-      {links.map((link) => (
-        <Link link={link} key={link.name} />
-      ))}
-    </div>
-  );
+export async function GET() {
+  try {
+    const links = await getLinks();
+    return Response.json(links);
+  } catch (error) {
+    console.error(error);
+    return new Response(null, { status: 500 });
+  }
 }

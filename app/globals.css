@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+}
+
+.bg-secondary {
+  @apply bg-neutral-600 dark:bg-neutral-400;
+}
+
+.text-secondary {
+  @apply text-neutral-600 dark:text-neutral-400;
+}
