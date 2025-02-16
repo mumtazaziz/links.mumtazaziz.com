@@ -7,19 +7,22 @@ export const metadata: Metadata = {
 
 export default function HomeLayout({ children }: React.PropsWithChildren) {
   return (
-    <main className="container my-5 h-100">
-      <div className="row">
-        <div className="col-md-6 mb-4">
-          <h1>Hit me up on...</h1>
-          <p>
+    <main className="container mx-auto my-12 px-6 md:flex md:gap-4">
+      <div className="w-full">
+        <div className="sticky top-12 mb-8 md:mb-0">
+          <h1 className="mb-4 text-4xl font-medium">Hit me up on...</h1>
+          <p className="text-secondary">
             or check out{" "}
-            <NextLink href="https://www.mumtazaziz.com">
+            <NextLink
+              href="https://www.mumtazaziz.com"
+              className="underline decoration-1 underline-offset-4 hover:text-black hover:decoration-2 hover:dark:text-white"
+            >
               mumtazaziz.com
             </NextLink>
           </p>
         </div>
-        <div className="col-md-6">{children}</div>
       </div>
+      <div className="w-full">{children}</div>
     </main>
   );
 }

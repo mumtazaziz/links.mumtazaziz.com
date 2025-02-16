@@ -15,7 +15,7 @@ async function getLinks() {
 export default async function HomePage() {
   const links = await getLinks();
   return (
-    <div className="list-group">
+    <div className="flex flex-col gap-2">
       {links.map((link) => (
         <Link link={link} key={link.name} />
       ))}

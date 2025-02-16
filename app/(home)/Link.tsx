@@ -15,10 +15,11 @@ const LinkRecordIcon = z
 function LinkIcon({ link }: { link: LinkRecord }) {
   const { data } = LinkRecordIcon.safeParse(link.icon);
   if (data?.["fa-brands"]) {
-    const icon = Object.values(fab).find(
-      (fa) => fa.iconName === data["fa-brands"]
+    const iconName = data["fa-brands"];
+    const icon = Object.values(fab).find((fa) => fa.iconName === iconName);
+    return (
+      icon && <FontAwesomeIcon icon={icon} fixedWidth className="text-2xl" />
     );
-    return icon && <FontAwesomeIcon icon={icon} className="fs-4" />;
   }
 }
 
@@ -30,13 +31,13 @@ export default function Link({ link }: LinkProps) {
   return (
     <NextLink
       href={link.url}
-      className="list-group-item list-group-item-action d-flex gap-3 p-3 align-items-center"
+      className="flex items-center gap-4 rounded-lg p-4 hover:bg-neutral-200 hover:text-black hover:dark:bg-neutral-800 hover:dark:text-white"
       title={link.description || undefined}
     >
       <LinkIcon link={link} />
-      <span>{link.description}</span>
+      {link.description && <div>{link.description}</div>}
       {link.username && (
-        <span className="text-body-secondary">{link.username}</span>
+        <div className="text-secondary ms-auto">{link.username}</div>
       )}
     </NextLink>
   );
